@@ -41,7 +41,7 @@ router.get('/combos/add-to-cart/:comboId' , async (req,res,next)=>{
             let result = cart.add(comboProduct, comboProduct.id);
             req.session.cart= cart
             console.log(req.session.cart)
-            console.log(req.session.cart.items[productId].item)
+            console.log(req.session.cart.items[comboId].item)
             res.status(200).json({
                 message: 'Product Added to the cart Successfully'
             })

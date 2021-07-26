@@ -8,18 +8,6 @@ const Orders = require('../models/ordersModel')
 const dateMapper = require('../helpers/dateMapper')
 const cartMapper = require('../helpers/cartMapper')
 
-router.get('/myOrders' , async (req,res,next)=>{
-    try{
-        res.status(200).json({
-            message:'Orders Working'
-        })
-    }catch(err){
-        res.status(500).json({
-            message: 'Something went wrong'
-        })
-    }
-})
-
 
 router.post('/order' , async (req,res,next)=>{
     try{
@@ -57,5 +45,17 @@ router.post('/order' , async (req,res,next)=>{
         })
     }
 })
+
+
+// router.get('/myOrders' , async (req,res,next)=>{
+    //     try{
+    //         res.status(200).json({
+    //             message:'Orders Working'
+    //         })
+    //     }catch(err){
+    //         res.status(500).json({
+    //             message: 'Something went wrong'
+    //         })
+    //     }
 
 module.exports = router

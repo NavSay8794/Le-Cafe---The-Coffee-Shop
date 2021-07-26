@@ -32,6 +32,7 @@ const productsRoute = require('./routes/productsAPI')
 const ordersRoute = require('./routes/ordersAPI')
 const cartRoute = require('./routes/cartAPI')
 const comboRoute = require('./routes/combosAPI')
+const postOrderRoute = require('./routes/postOrderAPI')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:'false'}))
@@ -40,8 +41,10 @@ app.use(express.urlencoded({extended:'false'}))
 // Using routes
 app.use('/',productsRoute)
 app.use('/', cartRoute)
-app.use(ordersRoute)
-app.use(comboRoute)
+app.use('/',ordersRoute)
+app.use('/',comboRoute)
+app.use('/', postOrderRoute)
+
 
 app.listen(process.env.PORT || 3000 , ()=>{
     console.log(`Connected at port ${process.env.PORT}`)

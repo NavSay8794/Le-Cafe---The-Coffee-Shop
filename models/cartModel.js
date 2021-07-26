@@ -4,7 +4,7 @@ module.exports = class Cart{
         this.totalQty = oldCart.totalQty ||0,
         this.totalPrice = oldCart.totalPrice || 0
     }
-    add(item , id){
+    addProduct(item , id){
         let storedItem = this.items[id];
         if(!storedItem){
             let inItem = {
@@ -22,6 +22,23 @@ module.exports = class Cart{
         this.totalPrice += storedItem.item.value 
     }
 
+    addCombo(item , id){
+        let storedItem = this.items[id];
+        if(!storedItem){
+            let inItem = {
+                item_id : id,
+                items: item.products,
+                qty: 0,
+                value: item.discounted_Value
+            }
+            storedItem =  this.items[id] = {item: inItem , qty: 0, value: 0}
+        }
+        storedItem.qty++;
+        storedItem.item.qty = storedItem.qty
+        storedItem.value = storedItem.item.value*storedItem.qty
+        this.totalQty++,
+        this.totalPrice += storedItem.item.value 
+    }
     generateArray(){
         let arr = []
         for(let id in this.items){
